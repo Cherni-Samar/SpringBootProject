@@ -59,4 +59,24 @@ public class Chambre {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
+
+    public long getIdChambre() {
+        return idChambre;
+    }
+
+    public long getNumeroChambre() {
+        return numeroChambre;
+    }
+
+    public TypeChambre getTypeC() {
+        return typeC;
+    }
+
+    public Bloc getBloc() {
+        return bloc;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
 }

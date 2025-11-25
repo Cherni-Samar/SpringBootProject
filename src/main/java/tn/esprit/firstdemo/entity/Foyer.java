@@ -1,4 +1,5 @@
 package tn.esprit.firstdemo.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,12 +27,12 @@ public class Foyer {
     private long capaciteFoyer;
 
 
+
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "foyer")
-    @JoinColumn(name = "id_universite")
+    @JsonIgnore  // Pour éviter les boucles JSON infinies
     private Universite universite;
-
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
@@ -58,4 +59,23 @@ public class Foyer {
         this.blocs = blocs;
     }
 
+    public long getIdFoyer() {
+        return idFoyer;
+    }
+
+    public String getNomFoyer() {
+        return nomFoyer;
+    }
+
+    public long getCapaciteFoyer() {
+        return capaciteFoyer;
+    }
+
+    public Universite getUniversite() {
+        return universite;
+    }
+
+    public List<Bloc> getBlocs() {
+        return blocs;
+    }
 }

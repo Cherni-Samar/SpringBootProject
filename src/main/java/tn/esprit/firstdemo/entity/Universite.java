@@ -29,6 +29,7 @@ public class Universite {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_foyer")  // La clé étrangère est ici
     private Foyer foyer;
 
     public Long getIdUniversite() {

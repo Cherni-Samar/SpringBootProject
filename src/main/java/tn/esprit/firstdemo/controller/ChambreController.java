@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.firstdemo.dto.ChambreDTO;
 import tn.esprit.firstdemo.entity.Bloc;
 import tn.esprit.firstdemo.entity.Chambre;
+import tn.esprit.firstdemo.entity.TypeChambre;
 import tn.esprit.firstdemo.service.IChambreService;
 
 import java.util.List;
@@ -56,4 +57,22 @@ public class ChambreController {
         return chambreService.addBlocAndChambre(bloc);
     }
 
+    @GetMapping("/getChambresParNomUniversite/{nomUniversite}")
+    public List<Chambre> getChambresParNomUniversite(@PathVariable("nomUniversite") String nomUniversite) {
+        return chambreService.getChambresParNomUniversite(nomUniversite);
+    }
+
+
+    @GetMapping("/getChambresParBlocEtType/{idBloc}/{typeC}")
+    public List<Chambre> getChambresParBlocEtType(
+            @PathVariable("idBloc") long idBloc,
+            @PathVariable("typeC") TypeChambre typeC) {
+        return chambreService.getChambresParBlocEtType(idBloc, typeC);
+    }
+    @GetMapping("/getChambresNonReserveParNomUniversiteEtTypeChambre/{nomUniversite}/{type}")
+    public List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(
+            @PathVariable("nomUniversite") String nomUniversite,
+            @PathVariable("type") TypeChambre type) {
+        return chambreService.getChambresNonReserveParNomUniversiteEtTypeChambre(nomUniversite, type);
+    }
 }

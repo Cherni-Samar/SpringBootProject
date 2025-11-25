@@ -10,4 +10,6 @@ public interface IEtudiantRepository extends JpaRepository<Etudiant,Long> {
     List<Etudiant> findAllByReservationsIdReservation(long idReservation);
     //ou bien     List<Etudiant> findByReservations_IdReservation(Long idReservation);
 
+    Etudiant findByCin(long cin);
+
 }

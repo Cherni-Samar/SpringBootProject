@@ -25,6 +25,7 @@ public class Reservation {
     //@Temporal(TemporalType.TIMESTAMP)
     private Date anneeUniversitaire;
     private boolean estValide;
+    private String numReservation;  // ← AJOUTER CET ATTRIBUT
 
 
     @ToString.Exclude
@@ -38,5 +39,53 @@ public class Reservation {
     @EqualsAndHashCode.Exclude
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Etudiant> etudiants;
+
+    public Long getIdReservation() {
+        return idReservation;
+    }
+
+    public void setIdReservation(Long idReservation) {
+        this.idReservation = idReservation;
+    }
+
+    public Date getAnneeUniversitaire() {
+        return anneeUniversitaire;
+    }
+
+    public void setAnneeUniversitaire(Date anneeUniversitaire) {
+        this.anneeUniversitaire = anneeUniversitaire;
+    }
+
+    public boolean isEstValide() {
+        return estValide;
+    }
+
+    public void setEstValide(boolean estValide) {
+        this.estValide = estValide;
+    }
+
+    public String getNumReservation() {
+        return numReservation;
+    }
+
+    public void setNumReservation(String numReservation) {
+        this.numReservation = numReservation;
+    }
+
+    public Chambre getChambre() {
+        return chambre;
+    }
+
+    public void setChambre(Chambre chambre) {
+        this.chambre = chambre;
+    }
+
+    public List<Etudiant> getEtudiants() {
+        return etudiants;
+    }
+
+    public void setEtudiants(List<Etudiant> etudiants) {
+        this.etudiants = etudiants;
+    }
 }
 

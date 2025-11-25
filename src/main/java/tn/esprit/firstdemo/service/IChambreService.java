@@ -3,6 +3,7 @@ package tn.esprit.firstdemo.service;
 import tn.esprit.firstdemo.dto.ChambreDTO;
 import tn.esprit.firstdemo.entity.Bloc;
 import tn.esprit.firstdemo.entity.Chambre;
+import tn.esprit.firstdemo.entity.TypeChambre;
 
 import java.util.List;
 
@@ -17,4 +18,11 @@ public interface IChambreService {
 
     Bloc addBlocAndChambre(Bloc bloc);
     public Chambre findChambreByNumero(Long id);
+    List<Chambre> getChambresParNomUniversite(String nomUniversite);
+
+    // Nouvelle méthode
+    List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC);
+
+    // Nouvelle méthode
+    List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(String nomUniversite, TypeChambre type);
 }
