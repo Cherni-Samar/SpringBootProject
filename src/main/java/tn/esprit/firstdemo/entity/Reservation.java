@@ -21,7 +21,7 @@ public class Reservation {
     @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idReservation;
+    private Long idReservation;
     //@Temporal(TemporalType.TIMESTAMP)
     private Date anneeUniversitaire;
     private boolean estValide;

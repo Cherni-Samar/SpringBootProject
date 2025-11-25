@@ -1,4 +1,5 @@
 package tn.esprit.firstdemo.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -35,5 +36,6 @@ public class Bloc {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "bloc", cascade = CascadeType.ALL)
+    @JsonIgnore
     List<Chambre> chambres;
 }

@@ -3,12 +3,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @ToString(includeFieldNames = false)
 @EqualsAndHashCode()
-@Setter
 @Entity
 @Table(name = "universite")
 public class Universite {
