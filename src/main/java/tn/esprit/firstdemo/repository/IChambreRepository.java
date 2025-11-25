@@ -7,6 +7,6 @@ import tn.esprit.firstdemo.entity.Chambre;
 import java.util.List;
 
 public interface IChambreRepository extends JpaRepository<Chambre,Long> {
-    public List<ChambreDTO> findByNumeroChambre(long x );
+    public Chambre findByNumeroChambre(long x );
 
 }

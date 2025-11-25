@@ -53,4 +53,10 @@ public class BlocController {
         return blocService.getBlocsByCapaciteCondition();
     }
 
+    @PutMapping("/affecterChambresABloc/{idBloc}")
+    public Bloc affecterChambresABloc(
+            @RequestBody List<Long> numChambre,
+            @PathVariable("idBloc") long idBloc) {
+        return blocService.affecterChambresABloc(numChambre, idBloc);
+    }
 }

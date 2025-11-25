@@ -16,5 +16,5 @@ public interface IChambreService {
     ChambreDTO assignBlocToChambre(Long idChambre, Long idBloc);
 
     Bloc addBlocAndChambre(Bloc bloc);
-    public List<ChambreDTO> findChambreByNumero(Long id);
+    public Chambre findChambreByNumero(Long id);
 }

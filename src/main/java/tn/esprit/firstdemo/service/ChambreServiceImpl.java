@@ -72,7 +72,7 @@ public class ChambreServiceImpl implements IChambreService {
     }
 
     @Override
-    public List<ChambreDTO> findChambreByNumero(Long id){
+    public Chambre findChambreByNumero(Long id){
         // Ici on peut aussi utiliser le mapping automatique si findByNumeroChambre retourne des entities
         // return chambreRepository.findByNumeroChambre(id)
         //        .stream().map(chambreMapper::toDto).toList();

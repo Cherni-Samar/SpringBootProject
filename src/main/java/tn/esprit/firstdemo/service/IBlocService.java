@@ -19,4 +19,7 @@ public interface IBlocService {
     List<Bloc> getBlocsByFoyerId(Long idFoyer);
 
     Bloc findBlocByChambreId(Long idChambre);
+    // Nouvelle méthode
+    Bloc affecterChambresABloc(List<Long> numChambre, long idBloc);
+
 }
