@@ -1,7 +1,6 @@
 package tn.esprit.firstdemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +13,8 @@ public class LoggingAspect {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    // Pointcut pour la couche service (modifiez le package si nécessaire)
-    @Pointcut("execution(* tn.esprit.firstdemo.service.*.*(..))")
+    // Pointcut pour la couche service et ses sous-packages
+    @Pointcut("execution(* tn.esprit.firstdemo.service..*(..))")
     public void serviceLayer() {}
 
     @Before("serviceLayer()")
@@ -27,10 +26,14 @@ public class LoggingAspect {
     }
 
     @AfterReturning(pointcut = "serviceLayer()", returning = "result")
-    public void logAfterReturning(JoinPoint joinPoint, Object result) {
-        String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
-        String method = joinPoint.getSignature().getName();
-        log.info("[AOP][AFTER RETURNING] {}.{}() returned={}", className, method, result);
+    public void logAfterReturning(JoinPoint jp, Object result) {
+        String cls = jp.getSignature().getDeclaringType().getSimpleName();
+        String m = jp.getSignature().getName();
+        if (result == null) {
+            log.info("[AOP][AFTER RETURNING] {}.{}() returned void or null", cls, m);
+        } else {
+            log.info("[AOP][AFTER RETURNING] {}.{}() returned={}", cls, m, result);
+        }
     }
 
     @AfterThrowing(pointcut = "serviceLayer()", throwing = "ex")
@@ -47,14 +50,5 @@ public class LoggingAspect {
         log.debug("[AOP][AFTER] {}.{}() finished", className, method);
     }
 
-    // Around to measure time (lightweight) — keeps compatibility with PerformanceAspect
-    @Around("serviceLayer()")
-    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
-        long start = System.currentTimeMillis();
-        Object result = joinPoint.proceed();
-        long elapsed = System.currentTimeMillis() - start;
-        String signature = joinPoint.getSignature().toShortString();
-        log.info("[AOP][AROUND] {} executed in {} ms", signature, elapsed);
-        return result;
-    }
+    // NOTE: Around removed to avoid duplicate timing logs (PerformanceAspect handles timing)
 }
